@@ -1,0 +1,55 @@
+﻿@model Measurement
+
+<div class="view-header">
+    <h1>Edit Measurement</h1>
+    <h2>@Model.MeasurementDate.ToShortDateString()</h2>
+</div>
+<div class="view-body">
+    <form asp-controller="Measurement" asp-action="Update" method="post" asp-route-id="@Model.Id">
+        <div class="form-group" hidden>
+            <label asp-for="Id"></label>
+            <input asp-for="Id" value=@Model.Id />
+            <span asp-validation-for="Id"></span>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="LymphSiteId"></label>
+            <input asp-for="LymphSiteId" value=@Model.LymphSiteId />
+            <span asp-validation-for="LymphSiteId"></span>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="UserId"></label>
+            <input asp-for="UserId" value="1" />
+            <span asp-validation-for="UserId"></span>
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="MeasurementDate">Measurement Date:</label>
+            <input asp-for="MeasurementDate" type="date" value=@Model.MeasurementDate.ToString("yyyy-MM-dd") />
+            <span asp-validation-for="MeasurementDate"></span>
+        </div>
+        @for (int i = 0; i < ViewBag.NumCircumferences; i++)
+        {
+            <div class="form-group" hidden>
+                <label asp-for="Circumferences[i].Id"></label>
+                <input asp-for="Circumferences[i].Id" value=@Model.Circumferences[i].Id />
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Circumferences[i].MeasurementId"></label>
+                <input asp-for="Circumferences[i].MeasurementId" value=@Model.Circumferences[i].MeasurementId />
+            </div>
+
+            <div class="form-group" hidden>
+                <label asp-for="Circumferences[i].PositionFromStart"></label>
+                <input asp-for="Circumferences[i].PositionFromStart" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Circumferences[i].DistanceAround" hidden>Circumference:</label>
+                <span>@Model.Circumferences[i].PositionFromStart</span>
+                <input asp-for="Circumferences[i].DistanceAround" /><span>(cm)</span>
+            </div>
+
+        }
+        <button class="button" type="submit">Save changes</button>
+        <a class="button button--danger" asp-controller="Measurement" asp-action="Delete" asp-route-id="@ViewBag.Id">Delete</a>
+    </form>
+</div>

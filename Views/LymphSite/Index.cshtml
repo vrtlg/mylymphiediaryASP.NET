@@ -1,0 +1,46 @@
+﻿
+@model LymphSiteViewModel
+    <div class="view-header">
+        <h1>Where are you affected by Lymphoedema?</h1>
+        <p>Please indicate the area(s) where you are affected by Lymphoedema and press "Next" to continue"</p>
+    </div>
+
+    <div class="view-body">
+        <form asp-controller="LymphSite" asp-action="AffectedSites" method="post">
+            @for (int i = 0; i < Model.LymphSites.Count; i++)
+            {
+            <div class="section">
+                <div class="row">
+                    <input asp-for="@Model.LymphSites[i].Id" hidden />
+                    <input asp-for="@Model.LymphSites[i].Name" hidden />
+                    <input asp-for="@Model.LymphSites[i].MaxMeasuringPoints" hidden />
+                    <h2><label class="label--highlight" id="label-@Model.LymphSites[i].Id" for="checkbox-@Model.LymphSites[i].Id">@Model.LymphSites[i].Name</label></h2>
+                    <input class="checkbox-class" id="checkbox-@Model.LymphSites[i].Id" onchange="what(this)" asp-for="@Model.LymphSites[i].IsAffected" />
+                </div>
+                <div class="numPoints-class" id="numPoints-id-@Model.LymphSites[i].Id" hidden>
+                    <label asp-for="@Model.LymphSites[i].NumMeasuringPoints">How many measuring points will you measure at this site?</label>
+                    <input asp-for="@Model.LymphSites[i].NumMeasuringPoints" />
+                </div>
+            </div>
+            }
+            <button class="button" id="next-button" type="submit">Next</button>
+        </form>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    function what(checkboxInput) {
+        var checkboxId = checkboxInput.id.split("-").pop();
+        var thisDiv = $("#numPoints-id-" + checkboxId);
+        var thisLabel = $("#label-" + checkboxId);
+
+        if ($(checkboxInput).is(":checked")) {
+            thisDiv.show();
+            //thisLabel.toggleClass("label--highlight");
+        }
+        else {
+            thisDiv.hide();
+        }
+    };
+
+</script>

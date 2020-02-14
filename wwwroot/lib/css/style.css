@@ -1,0 +1,145 @@
+﻿*{
+    font-family: sans-serif;
+    text-decoration: none;
+    list-style:none;
+    box-sizing: border-box;
+    color: inherit;
+    /*padding: 0;
+    margin: 0;*/
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background-color: rgb(240, 240, 240);
+}
+
+.renderbody__container{
+    margin: 80px 30px;
+    display:flex;
+    justify-content: center;
+}
+
+.renderbody_content{
+    max-width:80vw;
+    min-width: 60vw;
+}
+
+.header-nav{
+    background-color: rgb(60, 15, 122);
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.header-nav__ul{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header-nav__li{
+    color: white;
+    padding: 10px;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+.header-nav__li:hover{
+    transition: 0.3s;
+    background-color: rgb(174, 121, 252);
+    color: rgb(56, 56, 56);
+}
+
+.button {
+    background-color: rgb(60, 15, 122);
+    color: white;
+    border-radius: 5px;
+    padding: 2px 5px;
+    box-shadow: 2px 2px 2px #adadad;
+    font-size: 16px;
+}
+
+.button--danger {
+    background-color: rgb(212, 0, 0);
+    color: white;
+}
+
+.button:hover {
+    background-color: rgb(174, 121, 252);
+    color: rgb(56, 56, 56);
+}
+
+.button--danger:hover{
+    background-color: darkred;
+    color: white;
+}
+
+.button:active {
+    background-color: rgb(164, 102, 255);
+    color: inherit;
+}
+
+.button--danger:active {
+    background-color: rgb(230,0,0);
+}
+
+.view-header {
+    background-color: white;
+    box-shadow: 0px 3px 3px #adadad;
+    border-radius: 20px;
+    border: 0.5px solid lightgrey;
+    padding: 5px 30px;
+}
+
+.view-header h1 {
+    text-shadow: 2px 2px 2px lightgrey;
+}
+
+.view-body {
+    background-color: white;
+    box-shadow: 0px 3px 3px #adadad;
+    border: 0.5px solid lightgrey;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 10px;
+    max-width: 80vw;
+    min-width: 60vw;
+}
+.view-body h2{
+    margin:0;
+}
+
+.view-body .section{
+    margin-bottom: 10px;
+}
+
+.section__buttons{
+    margin-top: 5px;
+}
+
+/*.label--highlight{
+    color: red;
+}*/
+
+.row{
+    display:flex;
+    align-items:center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid grey;
+}
+
+.tables-container {
+    display: flex;
+    flex-flow: row nowrap;
+    overflow-x: scroll;
+    scrollbar-track-color: rgb(60, 15, 122);
+}

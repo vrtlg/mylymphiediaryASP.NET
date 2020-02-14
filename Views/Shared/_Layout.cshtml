@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/lib/css/style.css" />
+    @*<link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />*@
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="header-nav">
+            <ul class="header-nav__ul">
+                <li class="header-nav__li">
+                    <a asp-controller="LymphSite" asp-action="AffectedSites">Home</a>
+                </li>
+                <li class="header-nav__li">
+                    <a asp-controller="LymphSite" asp-action="Index">Set Affected Sites</a>
+                </li>
+                <li class="header-nav__li">
+                    <a asp-controller="User" asp-action="Details">Your Account</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="renderbody__container">
+        <div class="renderbody__content">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

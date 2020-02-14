@@ -1,0 +1,52 @@
+﻿@model Measurement
+
+<div class="view-header">
+    <h1>New Measurement for @ViewBag.LymphSiteName</h1>
+    @***user ID hard coded while login not built***@
+</div>
+
+<div class="view-body">
+    <form asp-controller="measurement" asp-action="Create" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-group" hidden>
+            <label asp-for="LymphSiteId"></label>
+            <input asp-for="LymphSiteId" value=@ViewBag.LymphSiteId />
+        </div>
+        <div class="form-group" hidden>
+            <label asp-for="UserId"></label>
+            <input asp-for="UserId" value="1" />
+        </div>
+        <div class="form-group">
+            <label asp-for="MeasurementDate">Measurement Date:</label>
+            <input asp-for="MeasurementDate" />
+            <span asp-validation-for="MeasurementDate"></span>
+        </div>
+        <br />
+
+        <p>Start point:</p>
+        <div class="form-group">
+            @for (int i = 0; i < ViewBag.NumMeasuringPoints; i++)
+            {
+                <div class="form-group" hidden>
+                    <label asp-for="Circumferences[i].MeasurementId"></label>
+                    <input asp-for="Circumferences[i].MeasurementId" value="@ViewBag.Id" />
+                </div>
+
+                <div class="form-group" hidden>
+                    <label asp-for="Circumferences[i].PositionFromStart"></label>
+                    <input asp-for="Circumferences[i].PositionFromStart" value="@(i+1)" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Circumferences[i].DistanceAround" hidden>Circumference:</label>
+                    <input asp-for="Circumferences[i].DistanceAround" /><span>(cm)</span>
+                    <span asp-validation-for="Circumferences[i].DistanceAround"></span>
+                </div>
+            }
+
+        </div>
+        <button class="button" type="submit">Submit</button>
+    </form>
+
+</div>
