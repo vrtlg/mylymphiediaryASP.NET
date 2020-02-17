@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +32,8 @@ namespace MLD
             services.AddScoped<Repository>();
             services.AddHttpContextAccessor();
             services.AddSession(); // brings in session capability
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +47,8 @@ namespace MLD
             app.UseHttpsRedirection(); // redirects HTTP to HTTPS
             app.UseStaticFiles(); // makes sure it serves JS, CSS, images
             app.UseRouting();
-            //app.UseAuthentication();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseSession();
 
             app.UseEndpoints(endpoints =>
@@ -52,6 +56,7 @@ namespace MLD
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=LymphSite}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

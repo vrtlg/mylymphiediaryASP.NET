@@ -22,6 +22,7 @@
                 <li class="header-nav__li">
                     <a asp-controller="User" asp-action="Details">Your Account</a>
                 </li>
+                <li><partial name="_LoginPartial" /></li>
             </ul>
         </nav>
     </header>
@@ -30,5 +31,6 @@
             @RenderBody()
         </div>
     </div>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -143,3 +143,18 @@ table, th, td {
     overflow-x: scroll;
     scrollbar-track-color: rgb(60, 15, 122);
 }
+
+.hyperlink--dark{
+    color: rgb(60, 15, 122);
+    font-size: 0.8rem;
+}
+
+.hyperlink--light{
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+
+.hyperlink--light:hover, .hyperlink--dark:hover{
+    text-decoration:underline;
+}
