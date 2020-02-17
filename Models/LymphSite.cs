@@ -12,5 +12,6 @@ namespace MLD.Models
         public int MaxMeasuringPoints { get; set; }
         public bool IsAffected { get; set; }
         public int NumMeasuringPoints { get; set; }
+        public string UserId { get; set; }
     }
 }

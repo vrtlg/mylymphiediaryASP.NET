@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using MLD.Models;
 
 namespace MLD.Areas.Identity.Pages.Account
 {
@@ -23,17 +24,20 @@ namespace MLD.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly AppDbContext _appDbContext;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            AppDbContext appDbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _appDbContext = appDbContext;
         }
 
         [BindProperty]
@@ -58,7 +62,7 @@ namespace MLD.Areas.Identity.Pages.Account
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "The two passwords do not match.")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -68,16 +72,31 @@ namespace MLD.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
+        public void Insert(string UserId)
+        {
+            _appDbContext.LymphSites.Add(new LymphSite { Name = "Head", MaxMeasuringPoints = 8, IsAffected = false, UserId = UserId });
+            _appDbContext.LymphSites.Add(new LymphSite { Name = "Trunk", MaxMeasuringPoints = 20, IsAffected = false, UserId = UserId });
+            _appDbContext.LymphSites.Add(new LymphSite { Name = "Left Arm", MaxMeasuringPoints = 30, IsAffected = false, UserId = UserId });
+            _appDbContext.LymphSites.Add(new LymphSite { Name = "Groin", MaxMeasuringPoints = 8, IsAffected = false, UserId = UserId });
+            _appDbContext.LymphSites.Add(new LymphSite { Name = "Head", MaxMeasuringPoints = 8, IsAffected = false, UserId = UserId });
+            _appDbContext.LymphSites.Add(new LymphSite { Name = "Right Leg", MaxMeasuringPoints = 40, IsAffected = false, UserId = UserId });
+            _appDbContext.LymphSites.Add(new LymphSite { Name = "Left Leg", MaxMeasuringPoints = 40, IsAffected = false, UserId = UserId });
+
+            _appDbContext.SaveChanges();
+        }
+
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email};
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                var UserId = user.Id;
                 if (result.Succeeded)
                 {
+                    Insert(UserId);
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

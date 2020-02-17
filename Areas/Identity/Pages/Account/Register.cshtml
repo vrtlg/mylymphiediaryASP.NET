@@ -30,6 +30,9 @@
                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 </div>
                 <button type="submit" class="button">Register</button>
+                <p>
+                    Already have an account? <a class="hyperlink--dark" asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Log in</a>
+                </p>
             </form>
         </div>
     </div>

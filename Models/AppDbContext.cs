@@ -27,13 +27,13 @@ namespace MLD.Models
             base.OnModelCreating(modelBuilder);
 
             //seeding LymphSite database
-            modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 1, Name = "Head", MaxMeasuringPoints = 8, IsAffected = false });
-            modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 2, Name = "Right Arm", MaxMeasuringPoints = 30, IsAffected = false });
-            modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 3, Name = "Trunk", MaxMeasuringPoints = 20, IsAffected = false });
-            modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 4, Name = "Left Arm", MaxMeasuringPoints = 30, IsAffected = false });
-            modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 5, Name = "Groin", MaxMeasuringPoints = 8, IsAffected = false });
-            modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 6, Name = "Right Leg", MaxMeasuringPoints = 40, IsAffected = false });
-            modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 7, Name = "Left Leg", MaxMeasuringPoints = 40, IsAffected = false });
+            //modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 1, Name = "Head", MaxMeasuringPoints = 8, IsAffected = false});
+            //modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 2, Name = "Right Arm", MaxMeasuringPoints = 30, IsAffected = false });
+            //modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 3, Name = "Trunk", MaxMeasuringPoints = 20, IsAffected = false });
+            //modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 4, Name = "Left Arm", MaxMeasuringPoints = 30, IsAffected = false });
+            //modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 5, Name = "Groin", MaxMeasuringPoints = 8, IsAffected = false });
+            //modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 6, Name = "Right Leg", MaxMeasuringPoints = 40, IsAffected = false });
+            //modelBuilder.Entity<LymphSite>().HasData(new LymphSite { Id = 7, Name = "Left Leg", MaxMeasuringPoints = 40, IsAffected = false });
 
 
             //seeding a development user

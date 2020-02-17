@@ -8,7 +8,7 @@ namespace MLD.Models
         [Required]
         public int PositionFromStart { get; set; }
 
-        [Required(ErrorMessage ="Please enter a circumference value for this site")]
+        [Required]
         [Range(1, 300)]
         public decimal DistanceAround { get; set; }
         public int MeasurementId { get; set; }

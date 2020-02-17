@@ -55,7 +55,7 @@ namespace MLD
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=LymphSite}/{action=Index}/{id?}");
+                    pattern: "{controller=LymphSite}/{action=AffectedSites}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
