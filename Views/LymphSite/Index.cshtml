@@ -12,6 +12,7 @@
             <div class="section">
                 <div class="row">
                     <input asp-for="@Model.LymphSites[i].Id" hidden />
+                    <input asp-for="@Model.LymphSites[i].UserId" hidden/>
                     <input asp-for="@Model.LymphSites[i].Name" hidden />
                     <input asp-for="@Model.LymphSites[i].MaxMeasuringPoints" hidden />
                     <h2><label class="label--highlight" id="label-@Model.LymphSites[i].Id" for="checkbox-@Model.LymphSites[i].Id">@Model.LymphSites[i].Name</label></h2>

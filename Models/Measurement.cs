@@ -18,8 +18,6 @@ namespace MLD.Models
         [Required]
         public List<Circumference> Circumferences { get; set; }
 
-        public int UserId { get; set; }
-
         [Required(ErrorMessage = "There is no Lymph Site associated with this measurement")]
         public int LymphSiteId { get; set; }
     }

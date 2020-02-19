@@ -75,10 +75,10 @@ namespace MLD.Areas.Identity.Pages.Account
         public void Insert(string UserId)
         {
             _appDbContext.LymphSites.Add(new LymphSite { Name = "Head", MaxMeasuringPoints = 8, IsAffected = false, UserId = UserId });
+            _appDbContext.LymphSites.Add(new LymphSite { Name = "Right Arm", MaxMeasuringPoints = 30, IsAffected = false, UserId = UserId });
             _appDbContext.LymphSites.Add(new LymphSite { Name = "Trunk", MaxMeasuringPoints = 20, IsAffected = false, UserId = UserId });
             _appDbContext.LymphSites.Add(new LymphSite { Name = "Left Arm", MaxMeasuringPoints = 30, IsAffected = false, UserId = UserId });
             _appDbContext.LymphSites.Add(new LymphSite { Name = "Groin", MaxMeasuringPoints = 8, IsAffected = false, UserId = UserId });
-            _appDbContext.LymphSites.Add(new LymphSite { Name = "Head", MaxMeasuringPoints = 8, IsAffected = false, UserId = UserId });
             _appDbContext.LymphSites.Add(new LymphSite { Name = "Right Leg", MaxMeasuringPoints = 40, IsAffected = false, UserId = UserId });
             _appDbContext.LymphSites.Add(new LymphSite { Name = "Left Leg", MaxMeasuringPoints = 40, IsAffected = false, UserId = UserId });
 

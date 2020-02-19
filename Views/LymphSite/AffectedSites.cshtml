@@ -4,20 +4,25 @@
     <p>Choose a site to track your condition</p>
 </div>
 <div class="view-body">
-    @foreach (var item in Model.LymphSites)
+    @if (Model.LymphSites.Count > 0)
     {
-        <div class="section">
-            <h2>@item.Name</h2>
-            <div class="section__buttons">
-                <a class="button" asp-controller="Measurement" asp-action="New" asp-route-LymphSiteId=@item.Id>New Measurement</a>
-                <a class="button" asp-controller="Measurement" asp-action="All" asp-route-LymphSiteId=@item.Id>Measurement History</a>
+        @foreach (var item in Model.LymphSites@*.Where(n=>n.UserId == Model.LymphSites.*@)
+        {
+            <div class="section">
+                <h2>@item.Name</h2>
+                <div class="section__buttons">
+                    <a class="button" asp-controller="Measurement" asp-action="New" asp-route-LymphSiteId=@item.Id>New Measurement</a>
+                    <a class="button" asp-controller="Measurement" asp-action="All" asp-route-LymphSiteId=@item.Id>Measurement History</a>
+                </div>
             </div>
-        </div>
-
-        <asp:Calender ID="Calendar1" runat="server" SelectionMode="DayWeekMonth">
-        </asp:Calender>
-
+        }
     }
+    else
+    {
+        <p>No affected areas found</p>
+        <p><a asp-controller="LymphSite" asp-action="Index" class="hyperlink--dark">Set affected lymph sites</a></p>
+    }
+
 </div>
 
 <div>

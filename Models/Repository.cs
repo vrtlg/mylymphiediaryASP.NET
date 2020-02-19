@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace MLD.Models
 {
@@ -13,10 +14,12 @@ namespace MLD.Models
             _appDbContext = dbInstance; 
         }
 
-        public List<LymphSite> AllLymphSites()
+        public List<LymphSite> UserLymphSites(string userId)
         {
+           // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //  var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return new List<LymphSite>(
-                _appDbContext.LymphSites.ToList()
+                _appDbContext.LymphSites.ToList().Where(x => x.UserId == userId) //ToList()
             );
         }
 
@@ -25,10 +28,11 @@ namespace MLD.Models
             return _appDbContext.LymphSites.First(x => x.Id == Id); // would be FirstOrDefault but there wouldn't be a case where LymphSiteId didn't exist in this example
         }
 
-        public List<LymphSite> GetAffectedLymphSites()
+        public List<LymphSite> GetAffectedLymphSites(string userId)
         {
+
             return new List<LymphSite>(
-                _appDbContext.LymphSites.Where(x => x.IsAffected)
+                _appDbContext.LymphSites.Where(x => x.IsAffected).Where(x => x.UserId == userId)
                 );
         }
 
