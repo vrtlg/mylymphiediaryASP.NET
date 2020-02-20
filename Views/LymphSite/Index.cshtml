@@ -19,7 +19,7 @@
                     <input class="checkbox-class" id="checkbox-@Model.LymphSites[i].Id" onchange="what(this)" asp-for="@Model.LymphSites[i].IsAffected" />
                 </div>
                 <div class="numPoints-class" id="numPoints-id-@Model.LymphSites[i].Id" hidden>
-                    <label asp-for="@Model.LymphSites[i].NumMeasuringPoints">How many measuring points will you measure at this site?</label>
+                    <label class="font-small" asp-for="@Model.LymphSites[i].NumMeasuringPoints">How many points will you measure at this site?</label>
                     <input asp-for="@Model.LymphSites[i].NumMeasuringPoints" />
                 </div>
             </div>

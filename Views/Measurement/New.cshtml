@@ -17,12 +17,11 @@
         </div>
         <div class="form-group">
             <label asp-for="MeasurementDate">Measurement Date:</label>
-            <input asp-for="MeasurementDate" />
+            <input class="form-control form__inputbox" asp-for="MeasurementDate" />
             <span asp-validation-for="MeasurementDate"></span>
         </div>
         <br />
 
-        <p>Start point:</p>
         <div class="form-group">
             @for (int i = 0; i < ViewBag.NumMeasuringPoints; i++)
             {
@@ -38,7 +37,7 @@
 
                 <div class="form-group">
                     <label asp-for="Circumferences[i].DistanceAround" hidden>Circumference:</label>
-                    <input asp-for="Circumferences[i].DistanceAround" /><span>(cm)</span>
+                    <input class="form-control form__inputbox" asp-for="Circumferences[i].DistanceAround" placeholder=@(i+1)/><span class="cm-span">cm</span>
                     <span asp-validation-for="Circumferences[i].DistanceAround"></span>
                 </div>
             }

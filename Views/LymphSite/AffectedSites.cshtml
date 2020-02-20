@@ -8,11 +8,11 @@
     {
         @foreach (var item in Model.LymphSites@*.Where(n=>n.UserId == Model.LymphSites.*@)
         {
-            <div class="section">
+            <div class="section row">
                 <h2>@item.Name</h2>
                 <div class="section__buttons">
-                    <a class="button" asp-controller="Measurement" asp-action="New" asp-route-LymphSiteId=@item.Id>New Measurement</a>
-                    <a class="button" asp-controller="Measurement" asp-action="All" asp-route-LymphSiteId=@item.Id>Measurement History</a>
+                    <a class="" asp-controller="Measurement" asp-action="New" asp-route-LymphSiteId=@item.Id><img src="~/lib/images/add.svg" alt="New measurement" class="icon" /></a>
+                    <a class="" asp-controller="Measurement" asp-action="All" asp-route-LymphSiteId=@item.Id><img src="~/lib/images/history.svg" alt="Measurement history" class="icon"/></a>
                 </div>
             </div>
         }

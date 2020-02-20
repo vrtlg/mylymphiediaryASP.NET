@@ -1,31 +1,42 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" type="text/css" href="~/lib/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
     @*<link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />*@
     <script src="~/lib/jquery/jquery.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
-    <header class="header">
-        <nav class="header-nav">
-            <ul class="header-nav__ul">
-                <li class="header-nav__li">
-                    <a asp-controller="LymphSite" asp-action="AffectedSites">Home</a>
-                </li>
-                <li class="header-nav__li">
-                    <a asp-controller="LymphSite" asp-action="Index">Set Affected Sites</a>
-                </li>
-                @*<li class="header-nav__li">
-                    <a asp-controller="User" asp-action="Details">Your Account</a>
-                </li>*@
-                <li><partial name="_LoginPartial" /></li>
-            </ul>
-        </nav>
-    </header>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <header class="header">
+            <nav class="header-nav">
+                <ul class="header-nav__ul">
+                    <li class="logo"><a asp-controller="LymphSite" asp-action="AffectedSites"><span class="logo-text">MLD</span><img src="~/lib/images/diary.svg" class="static-icon" /></a></li>
+                    <li>
+                        <ul>
+                            <li class="logo dropdown dropdown-key"><img src="~/lib/images/menu.svg" class="static-icon" /></li>
+                            <li>
+                                <div class="dropdown-content" hidden>
+                                    <a asp-controller="LymphSite" asp-action="Index">Set Affected Lymph Sites</a>
+                                    <partial name="_LoginPartial" />
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    }
     <div class="renderbody__container">
         <div class="renderbody__content">
             @RenderBody()
