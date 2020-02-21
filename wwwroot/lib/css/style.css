@@ -41,8 +41,8 @@ html {
     position: absolute;
     top: 0;
     width: 100%;
+    height: 50px;
     padding: 10px;
-    overflow:hidden;
 }
 
 /*--------------------------------------------------------------------------------------*/
@@ -64,9 +64,56 @@ html {
     margin-left: 5px;
     align-self: baseline;
 }
+
+#dropdown-content {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 1;
+    color: white;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+    background: rgb(60, 15, 122);
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 2px 2px 2px #adadad;
+    font-size: 0.8em;
+    position:absolute;
+    top:53px;
+    right:0;
+}
+
+.fixed-right{
+    position: absolute;
+    right: 10px;
+    top:13px;
+}
+
+.fixed-left{
+    position:absolute;
+    left:10px;
+}
+
+.logout{
+    border:none;
+    background:none;
+    outline: none;
+}
+.dropdown-item{
+    padding:10px;
+    width:100%;
+
+}
+    .dropdown-item:hover {
+        background-color: rgb(102, 51, 153);
+    }
+
+    .dropdown-item:last-of-type:hover {
+        border-radius: 0px 0px 10px 10px;
+        cursor: pointer;
+    }
+
 /*--------------------------------------------------------------------------------------*/
 
-.header-nav__ul {
+.header-nav {
     display: flex;
     justify-content: space-between;
     align-items:center;
@@ -162,6 +209,7 @@ table {
 
 table, th, td {
     border: 1px solid grey;
+    padding: 3px;
 }
 
 .tables-container {
@@ -226,6 +274,10 @@ table, th, td {
     display: flex;
     align-items: baseline;
     justify-content: flex-end;
+}
+
+.main__card--subheader{
+    margin-bottom: 10px;
 }
 
 .main__card--content h5 {

@@ -10,11 +10,11 @@
         <img src="~/lib/images/diary.svg" class="static-icon" />
     </div>
     <div class="main__card--content">
-        <div>
-            <h3 class="noSpace">@ViewData["Title"]</h3>
-            <h5 class="noSpace">Please enter your login details</h5>
+        <div class="main__card--subheader">
+            <h3>@ViewData["Title"]</h3>
+            <h5>Please enter your login details</h5>
+            <hr />
         </div>
-        <hr />
         <div class="row">
             <div>
                 <section>
@@ -42,10 +42,10 @@
                             <button type="submit" class="button">Log in</button>
                         </div>
                         <div class="form-group">
-                            <p class="noSpace">
+                            <p>
                                 <a class="hyperlink--dark" id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
                             </p>
-                            <p class="noSpace">
+                            <p>
                                 <a class="hyperlink--dark" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
                             </p>
                         </div>

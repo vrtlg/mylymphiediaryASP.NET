@@ -14,22 +14,23 @@
     @*<link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />*@
     <script src="~/lib/jquery/jquery.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
     @if (SignInManager.IsSignedIn(User))
     {
         <header class="header">
             <nav class="header-nav">
+                <a asp-controller="LymphSite" asp-action="AffectedSites" class="fixed-left"><span class="logo-text">MLD</span><img src="~/lib/images/diary.svg" class="static-icon" /></a>
                 <ul class="header-nav__ul">
-                    <li class="logo"><a asp-controller="LymphSite" asp-action="AffectedSites"><span class="logo-text">MLD</span><img src="~/lib/images/diary.svg" class="static-icon" /></a></li>
-                    <li>
-                        <ul>
-                            <li class="logo dropdown dropdown-key"><img src="~/lib/images/menu.svg" class="static-icon" /></li>
-                            <li>
-                                <div class="dropdown-content" hidden>
-                                    <a asp-controller="LymphSite" asp-action="Index">Set Affected Lymph Sites</a>
-                                    <partial name="_LoginPartial" />
-                                </div>
+                    <li class="dropdown">
+                        <img src="~/lib/images/menu.svg" class="static-icon fixed-right" onclick="showhide()" />
+                        <ul id="dropdown-content">
+                            <li class="dropdown-item" >
+                                <a asp-controller="LymphSite" asp-action="Index">Measurement settings</a>
+                            </li>
+                            <li class="dropdown-item" >
+                                <partial name="_LoginPartial" />
                             </li>
                         </ul>
                     </li>
@@ -45,3 +46,14 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+<script type="text/javascript">
+
+    function showhide() {
+        var e = document.getElementById("dropdown-content");
+        if (e.style.display == 'flex')
+            e.style.display = 'none';
+        else
+            e.style.display = 'flex';
+    }
+</script>
