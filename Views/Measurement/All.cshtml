@@ -20,8 +20,8 @@
                     <td>
                     </td>
                     <td>
-                        <a class="button" asp-controller="Measurement" asp-action="Show" asp-route-LymphSiteId="@ViewBag.LymphSiteId" asp-route-id="@Model.Measurements[i].Id">Edit</a>
-                        <a class="button button--danger" asp-controller="Measurement" asp-action="Delete" asp-route-id="@Model.Measurements[i].Id", new { onclick = "return confirm('Are you sure you want to delete this measurement?');" }>Delete</a>
+                        <a class="crud-action crud-action" asp-controller="Measurement" asp-action="Show" asp-route-LymphSiteId="@ViewBag.LymphSiteId" asp-route-id="@Model.Measurements[i].Id">Edit</a> | 
+                        <a class="crud-action crud-action--danger" asp-controller="Measurement" asp-action="Delete" asp-route-id="@Model.Measurements[i].Id", new { onclick = "return confirm('Are you sure you want to delete this measurement?');" }>Delete</a>
                     </td>
 
 

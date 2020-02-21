@@ -1,8 +1,8 @@
 ﻿@model Measurement
 
 <div class="view-header">
-    <h1>New Measurement for @ViewBag.LymphSiteName</h1>
-    @***user ID hard coded while login not built***@
+    <h1>Measure: @ViewBag.LymphSiteName </h1>
+    <p>Take circumference measurements at regular increments from your starting point</p>
 </div>
 
 <h1></h1>
@@ -23,6 +23,7 @@
         <br />
 
         <div class="form-group">
+            <label>Circumferences:</label>
             @for (int i = 0; i < ViewBag.NumMeasuringPoints; i++)
             {
                 <div class="form-group" hidden>

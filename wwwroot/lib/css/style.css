@@ -7,9 +7,11 @@
     /*padding: 0;
     margin: 0;*/
 }
-*{
-    padding:0;
-    margin:0;
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight:400;
 }
 
 body {
@@ -72,13 +74,13 @@ html {
     z-index: 1;
     color: white;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
-    background: rgb(60, 15, 122);
+    background-color: rgb(102, 51, 153);
     border-radius: 0px 0px 10px 10px;
-    box-shadow: 2px 2px 2px #adadad;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
     font-size: 0.8em;
-    position:absolute;
-    top:53px;
-    right:0;
+    position: absolute;
+    top: 53px;
+    right: 0;
 }
 
 .fixed-right{
@@ -103,7 +105,7 @@ html {
 
 }
     .dropdown-item:hover {
-        background-color: rgb(102, 51, 153);
+        background-color: rgb( 85, 17, 153 );
     }
 
     .dropdown-item:last-of-type:hover {
@@ -159,27 +161,31 @@ html {
 }
 
 .view-header {
-    background-color: white;
+    background: linear-gradient(rgb(39, 15, 79),rgb(60, 15, 122), rgb(60, 15, 122));
+    color: white;
     box-shadow: 0px 3px 3px #adadad;
-    border-radius: 20px;
-    border: 0.5px solid lightgrey;
+    border-radius: 20px 20px 0px 0px;
     padding: 5px 30px 20px 30px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
     .view-header h1 {
         padding:10px 0px;
-        text-shadow: 2px 2px 2px lightgrey;
+        text-shadow: 2px 2px 2px rgba(0,0,0,0.7);
     }
 
 .view-body {
     background-color: white;
     box-shadow: 0px 3px 3px #adadad;
     border: 0.5px solid lightgrey;
-    border-radius: 20px;
+    border-radius: 0px 0px 20px 20px;
     margin: 20px;
     padding: 10px 20px;
     max-width: 80vw;
     min-width: 60vw;
+    min-height: 50vh;
 }
 
     .view-body h2 {
@@ -212,11 +218,43 @@ table, th, td {
     padding: 3px;
 }
 
+th, tr:first-of-type {
+    color:white;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.7);
+    background: rgb(60, 15, 122) !important;
+}
+
+tr:nth-child(2n+1) {
+    background: rgba(60, 15, 122,0.3);
+}
+
+tr:nth-child(2n) {
+    background: rgba(60, 15, 122,0.1);
+}
+
+td{
+    text-align:center;
+}
+
 .tables-container {
     display: flex;
     flex-flow: row nowrap;
     overflow-x: scroll;
     scrollbar-track-color: rgb(60, 15, 122);
+}
+
+.crud-action {
+    font-size: 0.7em;
+    color: rgb(9, 156, 36);
+    text-transform: uppercase;
+}
+
+.crud-action:hover{
+    text-decoration:underline;
+}
+
+.crud-action--danger {
+    color: rgb(212, 8, 46);
 }
 
 .hyperlink--dark {

@@ -40,11 +40,12 @@
             <div class="form-group">
                 <label asp-for="Circumferences[i].DistanceAround" hidden>Circumference:</label>
                 <span>@Model.Circumferences[i].PositionFromStart</span>
-                <input asp-for="Circumferences[i].DistanceAround" /><span>(cm)</span>
+                <input class="form-control form__inputbox" asp-for="Circumferences[i].DistanceAround" /><span class="cm-span">cm</span>
             </div>
 
         }
         <button class="button" type="submit">Save changes</button>
-        <a class="button button--danger" asp-controller="Measurement" asp-action="Delete" asp-route-id="@ViewBag.Id">Delete</a>
+        <a class="crud-action--danger font-small cm-span" asp-controller="Measurement" asp-action="Delete" asp-route-id="@ViewBag.Id">Delete</a>
     </form>
+    
 </div>
