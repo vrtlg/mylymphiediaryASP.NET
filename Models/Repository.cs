@@ -10,13 +10,13 @@ namespace MLD.Models
     public class Repository
     {
         private readonly AppDbContext _appDbContext; // _ = private
-        public Repository (AppDbContext dbInstance){
-            _appDbContext = dbInstance; 
+        public Repository(AppDbContext dbInstance) {
+            _appDbContext = dbInstance;
         }
 
         public List<LymphSite> UserLymphSites(string userId)
         {
-           // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             //  var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return new List<LymphSite>(
                 _appDbContext.LymphSites.ToList().Where(x => x.UserId == userId) //ToList()
@@ -45,7 +45,7 @@ namespace MLD.Models
         {
             return new List<Measurement>(
                 _appDbContext.Measurements.Where(x => x.MeasurementDate == MeasurementDate)
-                ); 
+                );
 
             //WHERE is for returning MULTIPLE instances
             //First and/or FirstOrDefault is for a SINGLE instance

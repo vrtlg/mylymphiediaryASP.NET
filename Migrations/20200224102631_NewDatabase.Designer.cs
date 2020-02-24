@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MLD.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200214140726_identity")]
-    partial class identity
+    [Migration("20200224102631_NewDatabase")]
+    partial class NewDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,67 +63,12 @@ namespace MLD.Migrations
                     b.Property<int>("NumMeasuringPoints")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("LymphSites");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IsAffected = false,
-                            MaxMeasuringPoints = 8,
-                            Name = "Head",
-                            NumMeasuringPoints = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IsAffected = false,
-                            MaxMeasuringPoints = 30,
-                            Name = "Right Arm",
-                            NumMeasuringPoints = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            IsAffected = false,
-                            MaxMeasuringPoints = 20,
-                            Name = "Trunk",
-                            NumMeasuringPoints = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            IsAffected = false,
-                            MaxMeasuringPoints = 30,
-                            Name = "Left Arm",
-                            NumMeasuringPoints = 0
-                        },
-                        new
-                        {
-                            Id = 5,
-                            IsAffected = false,
-                            MaxMeasuringPoints = 8,
-                            Name = "Groin",
-                            NumMeasuringPoints = 0
-                        },
-                        new
-                        {
-                            Id = 6,
-                            IsAffected = false,
-                            MaxMeasuringPoints = 40,
-                            Name = "Right Leg",
-                            NumMeasuringPoints = 0
-                        },
-                        new
-                        {
-                            Id = 7,
-                            IsAffected = false,
-                            MaxMeasuringPoints = 40,
-                            Name = "Left Leg",
-                            NumMeasuringPoints = 0
-                        });
                 });
 
             modelBuilder.Entity("MLD.Models.Measurement", b =>
@@ -138,9 +83,6 @@ namespace MLD.Migrations
 
                     b.Property<DateTime>("MeasurementDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
