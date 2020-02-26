@@ -15,8 +15,8 @@
                     <input asp-for="@Model.LymphSites[i].UserId" hidden/>
                     <input asp-for="@Model.LymphSites[i].Name" hidden />
                     <input asp-for="@Model.LymphSites[i].MaxMeasuringPoints" hidden />
-                    <h2><label class="label--highlight" id="label-@Model.LymphSites[i].Id" for="checkbox-@Model.LymphSites[i].Id">@Model.LymphSites[i].Name</label></h2>
-                    <input class="checkbox-class" id="checkbox-@Model.LymphSites[i].Id" onchange="what(this)" asp-for="@Model.LymphSites[i].IsAffected" />
+                    <h2><label class="" id="label-@Model.LymphSites[i].Id" for="checkbox-@Model.LymphSites[i].Id">@Model.LymphSites[i].Name</label></h2>
+                    <input class="checkbox-class" id="checkbox-@Model.LymphSites[i].Id" onclick="what(this)" asp-for="@Model.LymphSites[i].IsAffected" />
                 </div>
                 <div class="numPoints-class" id="numPoints-id-@Model.LymphSites[i].Id" hidden>
                     <label class="font-small" asp-for="@Model.LymphSites[i].NumMeasuringPoints">How many points will you measure at this site?</label>
@@ -37,9 +37,8 @@
 
         if ($(checkboxInput).is(":checked")) {
             thisDiv.show();
-            //thisLabel.toggleClass("label--highlight");
         }
-        else {
+        else if (!$(checkboxInput).is(":checked")) {
             thisDiv.hide();
         }
     };

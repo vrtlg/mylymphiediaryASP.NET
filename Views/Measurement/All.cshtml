@@ -9,54 +9,55 @@
 
     @if (Model.Measurements.Count > 0)
     {
-        <div class="tables-container">
-            @for (int i = 0; i < Model.Measurements.Count; i++)
-            {
+    <div class="tables-container">
+        @for (int i = 0; i < Model.Measurements.Count; i++)
+        {
 
-                @*<div>*@
-                <table>
+            @*<div>*@
+            <table>
+                <tr>
+                    <td></td>
+                    <th>@Model.Measurements[i].MeasurementDate.ToShortDateString()</th>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td class="spaced">
+                        <a class="crud-action" asp-controller="Measurement" asp-action="Show" asp-route-LymphSiteId="@ViewBag.LymphSiteId" asp-route-id="@Model.Measurements[i].Id"><img class="icon-small" src="~/lib/images/edit.svg" alt="EDIT" /></a>
+                        <a class="crud-action crud-action--danger" asp-controller="Measurement" asp-action="Delete" asp-route-id="@Model.Measurements[i].Id" , new { onclick="return confirm('Are you sure you want to delete this measurement?');" }><img class="icon-small" src="~/lib/images/delete.svg" alt="DELETE" /></a>
+                    </td>
+
+
+                </tr>
+                @for (int p = 0; p < Model.Measurements[i].Circumferences.Count; p++)
+                {
                     <tr>
-                        <td></td>
-                        <th>@Model.Measurements[i].MeasurementDate.ToShortDateString()</th>
-                    </tr>
-                    <tr>
+                        <td>@(p + 1)</td>
                         <td>
-                        </td>
-                        <td class="spaced">
-                            <a class="crud-action" asp-controller="Measurement" asp-action="Show" asp-route-LymphSiteId="@ViewBag.LymphSiteId" asp-route-id="@Model.Measurements[i].Id"><img class="icon-small"src="~/lib/images/edit.svg" alt="EDIT"/></a> 
-                            <a class="crud-action crud-action--danger" asp-controller="Measurement" asp-action="Delete" asp-route-id="@Model.Measurements[i].Id" , new { onclick="return confirm('Are you sure you want to delete this measurement?');" }><img class="icon-small" src="~/lib/images/delete.svg" alt="DELETE"/></a>
-                        </td>
-
-
-                    </tr>
-                    @for (int p = 0; p < Model.Measurements[i].Circumferences.Count; p++)
-                    {
-                        <tr>
-                            <td>@(p + 1)</td>
-                            <td>
-                                @Model.Measurements[i].Circumferences[p].DistanceAround
-                                @*----------------------------------------------------------------------------------------------------*@
-                                @if (i > 0)
+                            @Model.Measurements[i].Circumferences[p].DistanceAround
+                            @*----------------------------------------------------------------------------------------------------*@
+                            @if (i > 0)
+                            {
+                                @if (@Model.Measurements[(i - 1)].Circumferences[p].DistanceAround > @Model.Measurements[i].Circumferences[p].DistanceAround)
                                 {
-                                    @if (@Model.Measurements[(i - 1)].Circumferences[p].DistanceAround > @Model.Measurements[i].Circumferences[p].DistanceAround)
-                                    {
-                                        <img src="~/lib/images/arrow-down.svg" alt="v" class="icon-small filter-green" />
-                                    }
-                                    else if (@Model.Measurements[(i - 1)].Circumferences[p].DistanceAround < @Model.Measurements[i].Circumferences[p].DistanceAround)
-                                    {
-                                        <img src="~/lib/images/arrow-up.svg" alt="^" class="icon-small filter-red" />
-                                    }
+                                    <img src="~/lib/images/arrow-down.svg" alt="v" class="icon-small filter-green" />
                                 }
+                                else if (@Model.Measurements[(i - 1)].Circumferences[p].DistanceAround < @Model.Measurements[i].Circumferences[p].DistanceAround)
+                                {
+                                    <img src="~/lib/images/arrow-up.svg" alt="^" class="icon-small filter-red" />
+                                }
+                            }
 
-                                @*-------------------------------------------------------------------------------------------------*@
-                            </td>
-                        </tr>
+                            @*-------------------------------------------------------------------------------------------------*@
+                        </td>
+                    </tr>
 
-                    }
-                </table>
+                }
+            </table>
 
-            }
-        </div>
+        }
+        <a asp-controller="Measurement" asp-action="New" asp-route-LymphSiteId=@ViewBag.LymphSiteId><img src="~/lib/images/add.svg" alt="New measurement" class="icon"/></a>
+    </div>
     }
 
     else

@@ -42,7 +42,6 @@ namespace MLD.Controllers
             {
                 return View(lymphsite);
             }
-
         }
 
         public IActionResult AffectedSites()

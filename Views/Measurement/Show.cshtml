@@ -2,7 +2,7 @@
 
 <div class="view-header">
     <h1>Edit Measurement</h1>
-    <h2>@Model.MeasurementDate.ToShortDateString()</h2>
+    <h2 class="highlight" onmouseover="highlight()" onclick="showhidedate()">@Model.MeasurementDate.ToShortDateString()</h2>
 </div>
 <div class="view-body">
     <form asp-controller="Measurement" asp-action="Update" method="post" asp-route-id="@Model.Id">
@@ -16,9 +16,9 @@
             <input asp-for="LymphSiteId" value=@Model.LymphSiteId />
             <span asp-validation-for="LymphSiteId"></span>
         </div>
-        <div class="form-group" hidden>
+        <div class="form-group" id="measurement-date-field" hidden>
             <label asp-for="MeasurementDate">Measurement Date:</label>
-            <input asp-for="MeasurementDate" type="date" value=@Model.MeasurementDate.ToString("yyyy-MM-dd") />
+            <input class="form-control form__inputbox" asp-for="MeasurementDate" type="date" value=@Model.MeasurementDate.ToString("yyyy-MM-dd") />
             <span asp-validation-for="MeasurementDate"></span>
         </div>
         @for (int i = 0; i < ViewBag.NumCircumferences; i++)
@@ -47,5 +47,17 @@
         <button class="button" type="submit">Save changes</button>
         <a class="crud-action--danger font-small cm-span" asp-controller="Measurement" asp-action="Delete" asp-route-id="@ViewBag.Id">Delete</a>
     </form>
-    
+
 </div>
+
+<script type="text/javascript">
+
+    function showhidedate() {
+        var el = document.getElementById("measurement-date-field");
+        if (el.style.display == 'block')
+            el.style.display = 'none';
+        else
+            el.style.display = 'block';
+    }
+
+</script>
